@@ -117,6 +117,23 @@ describe("Max depth for a Binary Tree", () => {
     let result = maxDepth(root);
     assert.equal(result, 1);
   });
+  it("should return 2 when the BT depth is 2", () => {
+    let root = { 
+      val: 1, 
+      left: {
+        val: "L2", 
+        left: null, 
+        right: null 
+      }, 
+      right: { 
+        val: "R2", 
+        left: null, 
+        right: null 
+      } 
+    };
+    let result = maxDepth(root);
+    assert.equal(result, 2);
+  });
   it("should return the maximum depth", () => {
     let root = {
       val: 10,
@@ -158,5 +175,93 @@ describe("Max depth for a Binary Tree", () => {
     };
     let result = maxDepth(root);
     assert.equal(result, 3);
+  });
+});
+
+
+describe("MIN depth for a Binary Tree", () => {
+  it("should return 0 when there is no root value", () => {
+    let root = null;
+    let result = minDepth(root);
+    assert.equal(result, 0);
+  });
+  it("should return 1 when the BT only has the root node", () => {
+    let root = { val: 6, left: null, right: null };
+    let result = minDepth(root);
+    assert.equal(result, 1);
+  });
+  it("should return 2 when the BT depth is 2", () => {
+    let root = { 
+      val: 1, 
+      left: {
+        val: "L2", 
+        left: null, 
+        right: null 
+      }, 
+      right: { 
+        val: "R2", 
+        left: null, 
+        right: null 
+      } 
+    };
+    let result = minDepth(root);
+    assert.equal(result, 2);
+  });
+
+  it("should return 1 when only 1 branch", () => {
+    let root = { 
+      val: 1, 
+      left: {
+        val: "L2", 
+        left: null, 
+        right: null 
+      }, 
+      right: null
+    };
+    let result = minDepth(root);
+    assert.equal(result, 1);
+  });
+
+  it("should return the minimum depth", () => {
+    let root = {
+      val: 10,
+      left: {
+        val: 1,
+        left: { val: 2, left: null, right: null },
+        right: {
+          val: 3,
+          left: { val: 4, left: null, right: null },
+          right: { val: 5, left: null, right: null },
+        },
+      },
+      right: { val: 6, left: null, right: null }
+    };
+    let result = minDepth(root);
+    assert.equal(result, 2);
+  });
+  it("should return the minimum depth", () => {
+    let root = {
+      val: 3, 
+      left: {
+        val: 9,
+        left: null, 
+        right: null  
+      },
+      right: {
+        val: 20, 
+        left: {
+          val: 15, 
+          left: null,
+          right: null
+        },
+        right: {
+          val: 7, 
+          left: null,
+          right: null
+        }
+      }
+    };
+    let result = minDepth(root);
+    assert.equal(result, 2);
   });
 });

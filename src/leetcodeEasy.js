@@ -142,35 +142,63 @@ var numJewelsInStones = function(jewels, stones) {
 // -100 <= Node.val <= 100
 
 var maxDepth = function(root) {
-  if (root === null) {
-    return 0
-  } else if (root.left === null && root.right === null) {
-    return 1
-  }
+  
+  if (root === null) return 0
+  if (root.left === null && root.right === null) return 1
+  let counter = 0;
+  let maxDepth = 0;  
 
-  var curCount = 0  
-  var maxCount = 0
   const helper = (node) => {
-    // base case 
     if (node.left === null && node.right === null) {
-      curCount++;
-      maxCount = Math.max(curCount, maxCount)
-      curCount--;
+      counter++
+      maxDepth = Math.max(maxDepth, counter)
+      counter--
       return
-    } 
-    // non base
-    if (node.left) {
-      curCount++
-      helper(node.left)
-      curCount--
+    } else {
+      if (node.left) {
+        counter++
+        helper(node.left)
+        counter--
+      }
+      if (node.right) {
+        counter++
+        helper(node.right)
+        counter--
+      }
     }
-    if (node.right) {
-      curCount++
-      helper(node.right)
-      curCount--
-    }
+
   }
   helper(root);
-  return maxCount
-
+  return maxDepth;
 };
+
+
+var minDepth = (root) => {
+  if (root === null) return 0
+  if (root.left === null || root.right === null) return 1
+  let counter = 0
+  let minDepth = Number.MAX_VALUE
+
+  const helper = (node) =>{
+    // base case -> if the node has no children
+    if (node.left === null || node.right === null) {
+      counter++
+      minDepth = Math.min(counter, minDepth)
+      counter--
+      return
+    }
+    if (node.left && counter < minDepth) {
+      counter++;
+      helper(node.left)
+      counter--
+    }
+    if (node.right && counter < minDepth) {
+      counter++
+      helper(node.right)
+      counter--
+    }
+    
+  }
+  helper(root)
+  return minDepth
+}
