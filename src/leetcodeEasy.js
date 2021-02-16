@@ -18,7 +18,7 @@ var defangIPaddr = function(address) {
 // Explanation: There are 4 good pairs (0,3), (0,4), (3,4), (2,5) 0-indexed.
 
 // Example 2:
-// Input: nums = [1,1,1,1]
+// Input: nums = [1,1,1,1]  -> 3 + 2 + 1  = 6
 // Output: 6
 // Explanation: Each pair in the array are good.
 
@@ -32,27 +32,51 @@ var defangIPaddr = function(address) {
 // 1 <= nums[i] <= 100
 
 var numIdenticalPairs = function(nums) {
-  if (nums.length <= 1) return 0;
-
-  nums = nums.sort((a,b) => a - b)
-
+  if (nums.length <= 1) return 0
+  nums = nums.sort((a, b) => a - b)
+  
   let count = 0;
-  let left = 0;
-  let right = 1;
+  let left = 0
+  let right = 1
   while (right < nums.length) {
     if (nums[left] === nums[right]) {
       if (right === nums.length - 1) {
-        let difference = right - left;
-        count += (difference * (difference + 1) / 2)
+        let diff = right - left
+        count += (diff + 1) * (diff) / 2
       }
+      right++
     } else {
-      let difference = right - left;
-      if (difference !== 1) {
-        count += (difference * (difference - 1) / 2)
-      }
-      left = right;
+      let diff = right - left
+      count += diff * (diff -1) / 2
+      left = right
+      right++
     }
-    right++
   }
-  return count;
+  return count
+};
+
+// Jewels and Stones
+// You're given strings jewels representing the types of stones 
+// that are jewels, and stones representing the stones you have. 
+// Each character in stones is a type of stone you have. You want 
+// to know how many of the stones you have are also jewels.
+
+// Letters are case sensitive, so "a" is considered a different 
+// type of stone from "A".
+
+// Example 1:
+// Input: jewels = "aA", stones = "aAAbbbb"
+// Output: 3
+
+// Example 2:
+// Input: jewels = "z", stones = "ZZ"
+// Output: 0
+
+// Constraints:
+// 1 <= jewels.length, stones.length <= 50
+// jewels and stones consist of only English letters.
+// All the characters of jewels are unique.
+
+var numJewelsInStones = function(jewels, stones) {
+  
 };
