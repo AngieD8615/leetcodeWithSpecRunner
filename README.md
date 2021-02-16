@@ -5,6 +5,9 @@ Now I am looking to expand some of my thinking into testing. In this repo
 you will find a bunch of algorithm and data structure problems that I have
 encountered. And a handful of tests to go with each. 
 
+### Tech
+JavaScript, Mocha, Chai 
+
 ### Toy Problems
 Many (if not all) of these problems are from leetcode.com
 

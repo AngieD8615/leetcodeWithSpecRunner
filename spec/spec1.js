@@ -1,20 +1,5 @@
 var assert = chai.assert;
 
-describe("sumTwoNums", function() {
-  it('should return a number', function() {
-    var result = sumTwoNums(1, 2);
-    assert.equal(typeof result, "number");
-  });
-  it('should return the sum of 2 positive values', function() {
-    var result = sumTwoNums(1, 2);
-    assert.equal(result, 3);
-  });
-  it('should return the sum of 2 values', function() {
-    var result = sumTwoNums(1/5, 3/5);
-    assert.equal(result, 0.8);
-  });
-});
-
 describe("DefangingAnIPAdress", () => {
   it('should return a sting', () => {
     var result = defangIPaddr("1.1.1.1")
@@ -34,3 +19,47 @@ describe("DefangingAnIPAdress", () => {
     assert.equal(result, address)
   });
 });
+
+describe("Number of Good Pairs", () => {
+  it('should handle an empty array', ()=> {
+    var nums = [];
+    var result = numIdenticalPairs(nums);
+    assert.equal(result, 0);
+  })
+  it('should handle an array with only 1 element', ()=> {
+    var nums = [4];
+    var result = numIdenticalPairs(nums);
+    assert.equal(result, 0);
+  })
+  it('should handle an array', ()=> {
+    var nums = [4, 4];
+    var result = numIdenticalPairs(nums);
+    assert.equal(result, 1);
+  })
+  it('should handle identical values as the highest value', ()=> {
+    var nums = [1,2,3,4,4,4];
+    var result = numIdenticalPairs(nums);
+    assert.equal(result, 3);
+  })
+  it('should handle example 1', ()=> {
+    var nums = [1,2,3,1,1,3];
+    var result = numIdenticalPairs(nums);
+    assert.equal(result, 4);
+  })
+  it('should handle example 1 sorted', ()=> {
+    var nums = [1,1,1,2,3,3];
+    var result = numIdenticalPairs(nums);
+    assert.equal(result, 4);
+  })
+  it('should handle example 2', ()=> {
+    var nums = [1,1,1,1];
+    var result = numIdenticalPairs(nums);
+    assert.equal(result, 6);
+  })
+  it('should handle when there are no identical pairs', ()=> {
+    var nums = [1,2,3,4];
+    var result = numIdenticalPairs(nums);
+    assert.equal(result, 0);
+  })
+
+})
