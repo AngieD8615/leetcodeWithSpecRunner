@@ -78,5 +78,15 @@ var numIdenticalPairs = function(nums) {
 // All the characters of jewels are unique.
 
 var numJewelsInStones = function(jewels, stones) {
-  
+  let jewelSet = new Set;
+  let count = 0
+  for (let char of jewels) {
+    jewelSet.add(char)
+  }
+  for (let char of stones) {
+    if (jewelSet.has(char)) {
+      count++
+    }
+  }
+  return count;
 };
