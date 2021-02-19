@@ -1,7 +1,7 @@
 var assert = chai.assert;
 var expect = chai.expect;
 
-describe("DefangingAnIPAdress", () => {
+xdescribe("DefangingAnIPAddress", () => {
   it("should return a sting", () => {
     var result = defangIPaddr("1.1.1.1");
     assert.equal(typeof result, "string");
@@ -25,7 +25,7 @@ describe("DefangingAnIPAdress", () => {
   });
 });
 
-describe("Number of Good Pairs", () => {
+xdescribe("Number of Good Pairs", () => {
   it("should handle an empty array", () => {
     var nums = [];
     var result = numIdenticalPairs(nums);
@@ -68,7 +68,7 @@ describe("Number of Good Pairs", () => {
   });
 });
 
-describe("Jewels and Stones", () => {
+xdescribe("Jewels and Stones", () => {
   it("if Jewels or Stones is an empty string, it should return 0", () => {
     const empty = "";
     const jewels = "af";
@@ -107,7 +107,7 @@ describe("Jewels and Stones", () => {
   });
 });
 
-describe("Max depth for a Binary Tree", () => {
+xdescribe("Max depth for a Binary Tree", () => {
   it("should return 0 when there is no root value", () => {
     let root = null;
     let result = maxDepth(root);
@@ -180,7 +180,7 @@ describe("Max depth for a Binary Tree", () => {
 });
 
 
-describe("MIN depth for a Binary Tree", () => {
+xdescribe("MIN depth for a Binary Tree", () => {
   it("should return 0 when there is no root value", () => {
     let root = null;
     let result = minDepth(root);
@@ -266,83 +266,3 @@ describe("MIN depth for a Binary Tree", () => {
     assert.equal(result, 2);
   });
 });
-
-describe("Should merge two sorted lists", () => {
-  class Node {
-    constructor(val) {
-      this.val = val;
-      this.next = null;
-    }
-  }
-
-  class LinkedList {
-    constructor () {
-      this.head = null;
-      this.tail = null;
-    }
-    insert(val){
-      let newNode = new Node (val)
-      if (this.head === null) {
-        this.head = newNode
-        this.tail = this.head
-      } else {
-        this.tail.next = newNode
-        this.tail = newNode
-      }
-    }
-  }
- 
-  it("should return null given two empty list", () => {
-    let l1 = new LinkedList()
-    let l2 = new LinkedList()
-    let result = mergeSortedLinkedList(l1, l2)
-    expect(result).to.eql(null)
-  });
-  it("should return l1 when l2 is an empty list", () => {
-    let l1 = new LinkedList()
-    let l2 = new LinkedList()
-    l2.insert(1) 
-    l2.insert(2) 
-    let result = mergeSortedLinkedList(l1, l2)
-
-    expect(result).to.eql(l2)
-  });
-  it("should return l2 when l1 is an empty list", () => {
-    let l1 = new LinkedList(3)
-    l1.insert (4) 
-    let l2 = new LinkedList(null)
-    let result = mergeSortedLinkedList(l1, l2);
-    expect(result).to.eql(l1)
-  });
-  it("should merge 2 sorted lists into 1 sorted list", () => {
-    let l1 = new LinkedList()
-    l1.insert (3) 
-   
-    let l2 = new LinkedList()
-    l2.insert (2) 
-    let result = mergeSortedLinkedList(l1, l2)
-    let expected = new LinkedList()
-    expected.insert(2)
-    expected.insert(3)
-    expect(result).to.eql(expected)
-  }); 
-  it("should merge 2 sorted lists into 1 sorted list", () => {
-    let l1 = new LinkedList()
-    l1.insert (1) 
-    l1.insert (4)
-    l1.insert (7)
-    let l2 = new LinkedList()
-    l2.insert (3) 
-    l2.insert (4) 
-    l2.insert (5) 
-    let expected = new LinkedList()
-    expected.insert(1)
-    expected.insert(3)
-    expected.insert(4)
-    expected.insert(4)
-    expected.insert(5)
-    expected.insert(7)
-    let result = mergeSortedLinkedList(l1, l2)
-    expect(result).to.eql(expected)
-  });
-})
