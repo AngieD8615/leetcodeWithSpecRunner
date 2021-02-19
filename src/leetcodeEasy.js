@@ -194,6 +194,10 @@ var minDepth = (root) => {
   helper(root)
   return minDepth
 }
+
+// Write a SortedMerge() function that takes two lists, each of which is sorted in increasing order, 
+// and merges the two together into one list which is in increasing order. SortedMerge() should return 
+// the new list. The new list should be made by splicing together the nodes of the first two lists.
 class Node {
   constructor(val) {
     this.val = val;
@@ -257,9 +261,6 @@ const mergeSortedLinkedList = (l1, l2) => {
         node2 = node2.next
       }
     }
-
   }
-
-  
   return merged
 }
