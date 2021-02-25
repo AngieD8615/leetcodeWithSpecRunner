@@ -20,6 +20,8 @@ Many (if not all) of these problems are from leetcode.com
 Make a new root directory on your computer, `cd` into the directory
 Initialize node package manager: `npm init`
 Install mocha and chiai (run in the browser): `npm install mocha chai --save-dev`
+Make a new directory called spec. This will house your tests
+Make a new directory called src. This will house your source code
 Create a `README.md` file
 Copy my `specRunner.html` file. Change the scripts to match your repo.
   <!-- load code you want to test here -->
