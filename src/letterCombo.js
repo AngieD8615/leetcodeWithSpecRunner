@@ -1,11 +1,12 @@
-//i: is a string on numbers from 2 - 9 (max length is 4)
-//o: an arr of strings comprising all strings that can be made from the number
+// 17. Letter Combinations of a Phone Number
+// Given a string containing digits from 2-9 inclusive, return all possible letter 
+// combinations that the number could represent. Return the answer in any order.
 
-// using recursion to solve
-// base case
-// if the curInd length of digits
+// A mapping of digit to letters (just like on the telephone buttons) is given below.
+// Note that 1 does not map to any letters.
 
-const letterCombinations = function (digits) {
+const letterCombinations = function (digits) {  // ""
+  if (digits.length === 0) return [];
   const mapping = {
     2: ["a", "b", "c"],
     3: ["d", "e", "f"],
@@ -16,29 +17,30 @@ const letterCombinations = function (digits) {
     8: ["t", "u", "v"],
     9: ["w", "x", "y", "z"],
   };
-  // edge case: give an empty string of digits
-  if (digits.length === 0) return [];
+  
+  // recursive
 
-  let results = [];
-  const helper = (curWord) => {
-    // baseCase: if the length of the curWord is the desired length
-    // push the word into the results array
-    // stop the continuation;
-    if (curWord.length === digits.length) {
-      results.push(curWord);
-      return;
+  let combos = []
+  const helper = (curStr) => {
+    // base case: 
+    //if the curStr length is equal to the digits length 
+      // push the curStr into combos
+      // end the process (return)
+    if (curStr.length === digits.length) {
+      combos.push(curStr)
+      return
     }
-    // recursionCase: need to keep adding to the word
-    // for each letter that is associated with the cur number
-      // apply the helper function on the curWord + the next letter
-    let curDigit = digits[curWord.length];
-    for (var i = 0; i < mapping[curDigit].length; i++) {
-      helper(curWord + mapping[curDigit][i]);
+    // recursive case:
+    // for all letter options for the curDigit
+      // reapply helper on  curStr + the next letter (from the mapping)
+    let curInd = curStr.length
+    let curDig = digits[curInd]
+    let letters = mapping[curDig]
+    for (var i = 0; i < letters.length; i++) {
+      helper(curStr + letters[i])
     }
-  };
 
-  // invoke the helper
-  // return results
-  helper("");
-  return results;
+  }
+  helper('')
+  return combos
 };
